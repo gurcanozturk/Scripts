@@ -37,19 +37,17 @@ with open(input_file, 'rb') as f:
     for row in reader:
         count +=1
         m = re.match('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$', row[0])
-
+        
         if m is not None:
             beginIP  = row[0]
             finishIP = row[1]
             country  = row[2]
             isp      = row[3][:30]
-
-
+            
             writer.writerow((beginIP,finishIP,country,isp))
             line_count += 1
         else:
             array.append(row)
-
 ofile.close()
 
 if count != line_count:
