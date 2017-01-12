@@ -3,20 +3,32 @@
 # Simple python script to send message to hipchat room with color
 # Gurcan Ozturk, gurcan@gurcanozturk.com, 2015
 # You have to get ROOM_ID and AUTH_TOKEN from HipChat group admin site.
+# Example : sendMessage2Hipchat.py -m "message text" -c "color"
 
 import sys
 import json
 import urllib2
+import argparse
 
 AUTH_TOKEN = 'MY_SECRET_TOKEN'
 ROOM_ID    = 'ROOM_ID'
-MSG_COLOR  = "red"
-MSG        = "You have message"
+
+parser = argparse.ArgumentParser(usage='%(prog)s -m <message> -c <color> [-h]')
+parser.add_argument('-m','--message', help='Message text to send', required=True)
+parser.add_argument('-c','--color', help='Message color', required=True)
+
+if len(sys.argv) < 2:
+  parser.print_usage()
+  sys.exit(1)
+else:
+  args = parser.parse_args()
+  MSG_COLOR = args.color
+  MSG_TEXT  = args.message
 
 def send_message(room_id_or_name, message, color):
     url = "https://api.hipchat.com/v2/room/"+ str(room_id_or_name) + "/notification"
     options = { 'message': message,
-		'color': color,
+                'color': color,
                 'message_format':'text',
                 'notify': True
             }
@@ -26,4 +38,4 @@ def send_message(room_id_or_name, message, color):
     res = urllib2.urlopen(req)
     return res.read()
 
-send_message(ROOM_ID, MSG, MSG_COLOR)
+send_message(ROOM_ID, MSG_TEXT, MSG_COLOR)
