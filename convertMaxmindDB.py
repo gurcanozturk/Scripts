@@ -2,6 +2,9 @@
 # Truncates ISP field to 30 chars in Maxmind's GeoIPISP DB file (GeoIP-142)
 # to use for NetScaler GeoIP check mechanism.
 # A. Gurcan OZTURK, 09/2015
+#
+# Usage : convertMaxmindDB.py -i <maxmind_db_file> -o <output_file>
+#
 
 import sys
 import csv
