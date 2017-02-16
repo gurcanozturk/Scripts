@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 # Simple python script to send message to hipchat room with color
 # Gurcan Ozturk, gurcan@gurcanozturk.com, 2015
-# You have to get ROOM_ID and AUTH_TOKEN from HipChat group admin site.
-# Example : sendMessage2Hipchat.py -m "message text" -c "color"
+#
+# Get ROOM_ID and AUTH_TOKEN from HipChat group admin site.
+# Usage : sendMessage2Hipchat.py -m "Hello Room" -c "red"
 
 import sys
 import json
