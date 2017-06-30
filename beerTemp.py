@@ -13,7 +13,6 @@ import subprocess
 import logging
 import MySQLdb
 import base64
-from math import trunc
 
 os.system('modprobe w1-gpio')                              # load one wire communication device kernel modules
 os.system('modprobe w1-therm')
