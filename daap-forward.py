@@ -1,4 +1,6 @@
- #!/usr/bin/env python
+#!/usr/bin/env python
+# Script to advertise local daap server as iTunes Share to network.
+#
 import os
 import sys
 import signal
